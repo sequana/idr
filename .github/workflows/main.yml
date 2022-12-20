@@ -31,7 +31,8 @@ jobs:
 
     - name: Install sequana with pip
       run: |
-        pip install .[PLOT]
+        pip install numpy
+        pip install .
         pip install pytest
     - name: testing
       run: |

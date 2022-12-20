@@ -20,23 +20,18 @@ def main():
     if sys.version_info.major <= 2:
         raise ValueError( "IDR requires Python version 3 or higher" )
     import idr
+
+    requirements = open("requirements.txt").read().split()
+
     setup(
         name = "idr",
         version = idr.__version__,
-
         author = "Nathan Boley",
         author_email = "npboley@gmail.com",
-
         ext_modules = extensions,     
-
-        install_requires = [ 'scipy>=0.13.0', 'numpy'  ],
-
-        extras_require={'PLOT': 'matplotlib'},
-
+        install_requires = requirements,
         packages= ['idr',],
-
         scripts =  ['./bin/idr',],
-
         description = ("IDR is a method for measuring the reproducibility of " + 
                        "replicated ChIP-seq type experiments and providing a " +
                        "stable measure of the reproducibility of identified " +

@@ -1,5 +1,6 @@
-.. image:: https://github.com/sequana/idr/actions/workflows/main.yml/badge.svg?branch=main
-    :target: https://github.com/sequana/idr/actions/workflows/main.yml
+[![Testing](https://github.com/sequana/idr/actions/workflows/main.yml/badge.svg)](https://github.com/sequana/idr/actions/workflows/main.yml)
+
+
 
 
 
