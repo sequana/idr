@@ -782,23 +782,30 @@ def plot(args, scores, ranks, IDRs, ofprefix=None):
     matplotlib.pyplot.ylabel("Sample 2 Rank")
     matplotlib.pyplot.title(
         "Ranks - (red >= %.2f IDR)" % args.soft_idr_threshold)
-    matplotlib.pyplot.scatter((ranks[0]+1)/float(max(ranks[0])+1), 
-                              (ranks[1]+1)/float(max(ranks[1])+1), 
-                              edgecolor=colors,
-                              c=colors,
-                              alpha=0.05)
 
-    matplotlib.pyplot.subplot(222)
-    matplotlib.pyplot.xlabel("Sample 1 log10 Score")
-    matplotlib.pyplot.ylabel("Sample 2 log10 Score")
-    matplotlib.pyplot.title(
-        "Log10 Scores - (red >= %.2f IDR)" % args.soft_idr_threshold)
-    matplotlib.pyplot.scatter(numpy.log10(scores[0]+1),
-                              numpy.log10(scores[1]+1), 
-                              edgecolor=colors,
-                              c=colors, 
-                              alpha=0.05)
-    
+    try:
+        matplotlib.pyplot.scatter((ranks[0]+1)/float(max(ranks[0])+1), 
+                                  (ranks[1]+1)/float(max(ranks[1])+1), 
+                                  edgecolor=colors,
+                                  c=colors,
+                                  alpha=0.05)
+    except ValueError: # empty ranks
+        pass
+
+    try:
+        matplotlib.pyplot.subplot(222)
+        matplotlib.pyplot.xlabel("Sample 1 log10 Score")
+        matplotlib.pyplot.ylabel("Sample 2 log10 Score")
+        matplotlib.pyplot.title(
+            "Log10 Scores - (red >= %.2f IDR)" % args.soft_idr_threshold)
+        matplotlib.pyplot.scatter(numpy.log10(scores[0]+1),
+                                  numpy.log10(scores[1]+1), 
+                                  edgecolor=colors,
+                                  c=colors, 
+                                  alpha=0.05)
+    except:
+        pass
+ 
     def make_boxplots(sample_i):
         groups = defaultdict(list)
         norm_ranks = (ranks[sample_i]+1)/float(max(ranks[sample_i])+1)
@@ -824,10 +831,12 @@ def plot(args, scores, ranks, IDRs, ofprefix=None):
                                   alpha=0.01, c='black')
 
     matplotlib.pyplot.subplot(223)
-    make_boxplots(0)
+    try:make_boxplots(0)
+    except ValueError: pass
 
     matplotlib.pyplot.subplot(224)
-    make_boxplots(1)
+    try:make_boxplots(1)
+    except ValueError: pass
 
     matplotlib.pyplot.savefig(ofprefix + ".png")
     return
@@ -847,7 +856,9 @@ def main():
     if args.only_merge_peaks:
         localIDRs, IDRs = None, None
     else:
-        if len(merged_peaks) < 20:
+
+        # TC changes. we do not want to restrict the analysis to a list of peaks
+        if len(merged_peaks) < -15:
             error_msg = "Peak files must contain at least 20 peaks post-merge"
             error_msg += "\nHint: Merged peaks were written to the output file"
             write_results_to_file(
