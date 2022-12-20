@@ -1,5 +1,13 @@
+.. image:: https://github.com/sequana/idr/actions/workflows/main.yml/badge.svg?branch=main
+    :target: https://github.com/sequana/idr/actions/workflows/main.yml
+
+
+
 Irreproducible Discovery Rate (IDR)
 ===
+
+<p align="justify"><b>warning</b> This is a forked version of the idr package. It allows to compute IDR for small number of peaks, fix some plotting issues that may arise with matplotlib, add a workflow to check the installation, and a couple of tests.</p>
+
 
 <p align="justify">The IDR (Irreproducible Discovery Rate) framework is a uniﬁed approach to measure the reproducibility of ﬁndings identiﬁed from replicate experiments and provide highly stable thresholds based on reproducibility. Unlike the usual scalar measures of reproducibility, the IDR approach creates a curve, which quantitatively assesses when the ﬁndings are no longer consistent across replicates. In layman's terms, the IDR method compares a pair of ranked lists of identifications (such as ChIP-seq peaks). These ranked lists should not be pre-thresholded i.e. they should provide identifications across the entire spectrum of high confidence/enrichment (signal) and low confidence/enrichment (noise). The IDR method then fits the bivariate rank distributions over the replicates in order to separate signal from noise based on a defined confidence of rank consistency and reproducibility of identifications i.e the IDR threshold.</p>
 
@@ -9,38 +17,8 @@ Irreproducible Discovery Rate (IDR)
 Installation
 ------------
 
-* Get the current repo
 ```
-wget https://github.com/nboley/idr/archive/2.0.2.zip
-```
-
-* Install the dependencies
-- python3
-- python3 headers 
-- numpy
-- setuptools
-- matplotlib (only required for plotting the results)
-
-In Ubuntu 14.04+ one can run: 
-(sudo) apt-get install python3-dev python3-numpy python3-setuptools python3-matplotlib
-
-In a shared environment, the dependencies and idr package may need to be installed locally. [Anaconda](http://continuum.io/downloads#py34) largely automates this process. To install anaconda, which includes all the neessary dependencies:
-
-```
-Download [Anaconda3-2.2.0-Linux-x86_64.sh](http://continuum.io/downloads#py34) 
-bash Anaconda3-2.2.0-Linux-x86_64.sh
-```
-
-* Download and unzip the idr code
-```
-wget https://github.com/nboley/idr/archive/2.0.2.zip
-unzip 2.0.2.zip
-cd 2.0.2/
-```
-
-* Then install idr 
-```
-python3 setup.py install
+pip install gith+https://github.com/sequana/idr/
 ```
 
 Usage
@@ -247,7 +225,3 @@ References
 ----------
 "Measuring reproducibility of high-throughput experiments" (2011), Annals of Applied Statistics, Vol. 5, No. 3, 1752-1779, by Li, Brown, Huang, and Bickel
 
-Issues
-------
-
-If you notice any problem with the code, please file an issue over [here](https://github.com/nboley/idr/issues)

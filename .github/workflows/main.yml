@@ -1,0 +1,39 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    branches-ignore: []
+  schedule:
+    - cron: '0 0 * * SUN'
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 5
+      matrix:
+        python: [3.7, 3.8, 3.9]
+      fail-fast: false
+
+
+    steps:
+    - name: checkout git repo
+      uses: actions/checkout@v2
+
+    - name: Set up Python 3.X
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python }}
+
+    - name: Install sequana with pip
+      run: |
+        pip install .[PLOT]
+        pip install pytest
+    - name: testing
+      run: |
+        pytest --cov-report term-missing --cov=idr
+
