@@ -29,18 +29,18 @@ jobs:
       with:
         python-version: ${{ matrix.python }}
 
-    - name: Add conda to system path
-      run: |
-        echo $CONDA/bin >> $GITHUB_PATH
+    #- name: Add conda to system path
+    #  run: |
+    #    echo $CONDA/bin >> $GITHUB_PATH
 
-    - name: conda
-      run: |
-        conda install -c conda-forge --quiet 'mamba<0.24' python=${{ matrix.python }}
-        mamba install -c conda-forge -c bioconda --quiet -y numpy matplotlib cython
+    #- name: conda
+    #  run: |
+    #    conda install -c conda-forge --quiet 'mamba<0.24' python=${{ matrix.python }}
+    #    mamba install -c conda-forge -c bioconda --quiet -y numpy matplotlib cython
 
-    - name: Install sequana with pip
+    - name: Install idr with pip
       run: |
-        #pip install numpy
+        pip install numpy
         pip install .
         pip install pytest pytest-cov
     - name: testing
