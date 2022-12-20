@@ -33,7 +33,7 @@ jobs:
       run: |
         pip install numpy
         pip install .
-        pip install pytest
+        pip install pytest pytest-cov
     - name: testing
       run: |
         pytest --cov-report term-missing --cov=idr
