@@ -2,13 +2,11 @@
 
 
 
+<p align="justify"><b>warning</b> This is a forked version of the idr package. It allows to compute IDR for small number of peaks, fix some plotting issues that may arise with matplotlib, add a workflow to check the installation, and a couple of tests.</p>
 
 
 Irreproducible Discovery Rate (IDR)
 ===
-
-<p align="justify"><b>warning</b> This is a forked version of the idr package. It allows to compute IDR for small number of peaks, fix some plotting issues that may arise with matplotlib, add a workflow to check the installation, and a couple of tests.</p>
-
 
 <p align="justify">The IDR (Irreproducible Discovery Rate) framework is a uniﬁed approach to measure the reproducibility of ﬁndings identiﬁed from replicate experiments and provide highly stable thresholds based on reproducibility. Unlike the usual scalar measures of reproducibility, the IDR approach creates a curve, which quantitatively assesses when the ﬁndings are no longer consistent across replicates. In layman's terms, the IDR method compares a pair of ranked lists of identifications (such as ChIP-seq peaks). These ranked lists should not be pre-thresholded i.e. they should provide identifications across the entire spectrum of high confidence/enrichment (signal) and low confidence/enrichment (noise). The IDR method then fits the bivariate rank distributions over the replicates in order to separate signal from noise based on a defined confidence of rank consistency and reproducibility of identifications i.e the IDR threshold.</p>
 
@@ -19,7 +17,7 @@ Installation
 ------------
 
 ```
-pip install gith+https://github.com/sequana/idr/
+pip install git+https://github.com/sequana/idr/
 ```
 
 Usage
