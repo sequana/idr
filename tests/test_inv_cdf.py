@@ -9,20 +9,22 @@ from scipy.optimize import bisect, brentq
 
 import timeit
 
-import pyximport; pyximport.install()
-from utility import (
+#import pyximport; pyximport.install()
+from idr.utility import (
     py_compute_pseudo_values, compute_pseudo_values, 
     simulate_values, py_cdf, py_cdf_i )
-from inv_cdf import cdf, cdf_i, cdf_d1, c_compute_pseudo_values, c_compute_pseudo_values_old
+
+from idr.inv_cdf import cdf, cdf_i, cdf_d1, c_compute_pseudo_values #c_compute_pseudo_values_old
+
 def compute_pseudo_values(r, mu, sigma, rho):
     z = numpy.zeros(len(r), dtype=float)
     res = c_compute_pseudo_values(r, z, mu, sigma, rho)
     return res
 
-def compute_pseudo_values_old(r, mu, sigma, rho):
-    z = numpy.zeros(len(r), dtype=float)
-    res = c_compute_pseudo_values_old(r, z, mu, sigma, rho)
-    return res
+#def compute_pseudo_values_old(r, mu, sigma, rho):
+#    z = numpy.zeros(len(r), dtype=float)
+#    res = c_compute_pseudo_values_old(r, z, mu, sigma, rho)
+#    return res
 
 
 def symbolic_computations():
@@ -169,8 +171,7 @@ def main():
 
     print( r-cdf( x, mu, sigma, lamda ), r, cdf( x, mu, sigma, lamda ) )
 
-main()
-assert False
+#main()
 
 params = (1, 1, 0.9, 0.5)
 (r1_ranks, r2_ranks), (r1_values, r2_values) = simulate_values(

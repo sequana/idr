@@ -1,5 +1,4 @@
 numpy
 cython
 matplotlib
-pyximport
 scipy>=0.13.0
