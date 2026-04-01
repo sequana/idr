@@ -1,6 +1,13 @@
-import os, sys
+import os, sys, re
 import numpy
 from setuptools import setup, Extension, find_packages
+
+def get_version():
+    with open(os.path.join(os.path.dirname(__file__), "idr", "__init__.py")) as f:
+        m = re.search(r'__version__\s*=\s*["\']([^"\']+)["\']', f.read())
+    if m:
+        return m.group(1)
+    raise RuntimeError("Could not determine version")
 
 try:
     from Cython.Build import cythonize
@@ -19,13 +26,12 @@ except ImportError:
 def main():
     if sys.version_info.major <= 2:
         raise ValueError( "IDR requires Python version 3 or higher" )
-    import idr
 
     requirements = open("requirements.txt").read().split()
 
     setup(
         name = "idr",
-        version = idr.__version__,
+        version = get_version(),
         author = "Nathan Boley",
         author_email = "npboley@gmail.com",
         ext_modules = extensions,     
