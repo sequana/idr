@@ -4,6 +4,17 @@
 
 <p align="justify"><b>warning</b> This is a forked version of the idr package. It allows to compute IDR for small number of peaks, fix some plotting issues that may arise with matplotlib, add a workflow to check the installation, and a couple of tests.</p>
 
+Changes
+===
+
+Packaging
+---------
+
+Package metadata (name, version, dependencies, classifiers, homepage, etc.) and the pytest configuration have been consolidated into `pyproject.toml`, replacing the former `setup.py`/`setup.cfg` files. `setup.py` is retained solely to build the Cython/C extension (`idr.inv_cdf`), which cannot be expressed natively in `pyproject.toml` with the setuptools backend. The project description captured here in `README.md` is used as the long description on PyPI via `readme = "README.md"` in `pyproject.toml`.
+
+We will not release versions on pypi but releases with tags accessible from this github repository
+
+
 
 Irreproducible Discovery Rate (IDR)
 ===
@@ -19,11 +30,6 @@ Installation
 ```
 pip install git+https://github.com/sequana/idr/
 ```
-
-Packaging
----------
-
-Package metadata (name, version, dependencies, classifiers, homepage, etc.) and the pytest configuration have been consolidated into `pyproject.toml`, replacing the former `setup.py`/`setup.cfg` files. `setup.py` is retained solely to build the Cython/C extension (`idr.inv_cdf`), which cannot be expressed natively in `pyproject.toml` with the setuptools backend. The project description captured here in `README.md` is used as the long description on PyPI via `readme = "README.md"` in `pyproject.toml`.
 
 Usage
 -----
