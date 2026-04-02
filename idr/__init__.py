@@ -1,6 +1,16 @@
 import sys
+import importlib.metadata as metadata
 
-__version__ = "2.1.0"
+
+def get_package_version(package_name):
+    try:
+        version = metadata.version(package_name)
+        return version
+    except metadata.PackageNotFoundError:
+        return f"{package_name} not found"
+
+
+__version__ = get_package_version("idr")
 
 DEBUG_LEVELS = {'ERROR', 'WARNING', None, 'VERBOSE', 'DEBUG'}
 ERROR_LEVELS = {'ERROR', 'WARNING'}

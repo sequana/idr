@@ -1,3 +1,39 @@
 [build-system]
 requires = ["setuptools", "wheel", "numpy", "cython"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "idr"
+version = "2.1.0"
+description = "IDR is a method for measuring the reproducibility of replicated ChIP-seq type experiments and providing a stable measure of the reproducibility of identified peaks."
+readme = "README.md"
+license = { text = "GPL3" }
+keywords = ["IDR"]
+authors = [
+    { name = "Nathan Boley", email = "npboley@gmail.com" }
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Development Status :: 5 - Production/Stable",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)",
+]
+requires-python = ">=3.9"
+dependencies = [
+    "numpy",
+    "cython",
+    "matplotlib",
+    "scipy>=0.13.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/sequana/idr"
+
+[tool.setuptools.packages.find]
+include = ["idr*"]
+
+[tool.setuptools]
+script-files = ["bin/idr"]
+
+[tool.pytest.ini_options]
+addopts = "--verbose --cov idr"
