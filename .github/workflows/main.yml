@@ -40,7 +40,7 @@ jobs:
     - name: Install idr with pip
       run: |
         # used within the setup
-        pip install numpy
+        pip install numpy cython
         pip install .
         pip install pytest pytest-cov
     - name: testing
