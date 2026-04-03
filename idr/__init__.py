@@ -68,3 +68,5 @@ MAX_SIGMA = 20
 
 MIN_MU = 0.0
 MAX_MU = 20.0
+
+from .idr import main
