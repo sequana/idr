@@ -3,7 +3,7 @@ requires = ["setuptools", "wheel", "numpy", "cython"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "idr"
+name = "idrix"
 version = "2.1.0"
 description = "IDR is a method for measuring the reproducibility of replicated ChIP-seq type experiments and providing a stable measure of the reproducibility of identified peaks."
 readme = "README.md"

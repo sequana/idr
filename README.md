@@ -14,7 +14,10 @@ Package metadata (name, version, dependencies, classifiers, homepage, etc.) and 
 
 We will not release versions on pypi but releases with tags accessible from this github repository
 
+Naming
+------
 
+To be able to include in pyproject, it must be on pypi but cannot reuse the original name, so pyproject call this project **idrix** on pypi even though the import and library name remains called **idr**
 
 Irreproducible Discovery Rate (IDR)
 ===
